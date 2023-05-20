@@ -11,3 +11,4 @@ Content-Type: application/json
 ### Get all 
 GET http://localhost:8080/blogs
 Content-Type: application/json
+
