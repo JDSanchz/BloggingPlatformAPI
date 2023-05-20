@@ -1,0 +1,13 @@
+###Create one
+POST http://localhost:8080/blogs
+Content-Type: application/json
+
+{
+  "date": "2023-05-20T10:00:00Z",
+  "message": "This is a new blog post.",
+  "userId": 7
+}
+
+### Get all 
+GET http://localhost:8080/blogs
+Content-Type: application/json

@@ -1,0 +1,28 @@
+[
+    {
+      "date": "2023-05-19T08:00:00Z",
+      "message": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod aliquet ligula.",
+      "userId": 10
+    },
+    {
+      "date": "2023-05-18T14:30:00Z",
+      "message": "Vestibulum rhoncus varius tincidunt. Fusce non nisl nec tortor consequat pharetra.",
+      "userId": 5
+    },
+    {
+      "date": "2023-05-17T10:45:00Z",
+      "message": "Praesent eget elit vel velit fringilla vestibulum vel eu dolor.",
+      "userId": 18
+    },
+    {
+      "date": "2023-05-16T16:20:00Z",
+      "message": "Aliquam ultrices elit at risus dignissim, vitae ullamcorper nunc posuere.",
+      "userId": 3
+    },
+    {
+      "date": "2023-05-15T11:10:00Z",
+      "message": "Vivamus non purus vitae mauris lobortis dictum id id justo.",
+      "userId": 12
+    }
+  ]
+  
