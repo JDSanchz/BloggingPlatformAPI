@@ -12,3 +12,15 @@ Content-Type: application/json
 GET http://localhost:8080/blogs
 Content-Type: application/json
 
+### On Render
+GET https://bloggingapi1.onrender.com/blogs
+
+### Posting on Render
+POST https://bloggingapi1.onrender.com/blogs
+Content-Type: application/json
+
+{
+  "date": "2023-05-20T10:00:00Z",
+  "message": "This is a new blog post.",
+  "userId": 99
+}
