@@ -80,13 +80,32 @@
         }
       },
       "put": {
-        "description": "",
+        "description": "Update a blog by ID",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "The ID of the blog"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "description": "The updated message of the blog"
+                },
+                "userId": {
+                  "type": "string",
+                  "description": "The ID of the user"
+                }
+              }
+            }
           }
         ],
         "responses": {
