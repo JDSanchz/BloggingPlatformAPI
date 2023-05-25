@@ -51,7 +51,7 @@ const update = async (req, res) => {
     }
 
     const result = await mongodb.getDb().db().collection('blogs').updateOne({ _id: new ObjectId(blogId) }, { $set: updatedBlog });
-    res.status(200).json(result);
+    res.status(204).json(result);
   } catch (err) {
     console.error('Error updating blog:', err);
     res.status(500).json({ error: 'An error occurred while updating the blog' });
