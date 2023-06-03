@@ -4,7 +4,9 @@ const { body } = require('express-validator');
 const blogsController = require('../controllers/blogs');
 
 
-router.get('/', blogsController.getAll);
+const { requiresAuth } = require('express-openid-connect');
+
+router.get('/', requiresAuth(), blogsController.getAll);
 
 const { param } = require('express-validator');
 

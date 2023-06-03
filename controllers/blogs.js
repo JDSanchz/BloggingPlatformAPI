@@ -4,6 +4,10 @@ const { validationResult } = require('express-validator');
 
 //🧱GET ALL FUNCTION WITH ERROR HANDLING AND SORTING🧱
 const getAll = async (req, res) => {
+  if (!req.oidc.isAuthenticated()) {
+    return res.status(401).json({ error: 'You must be logged in to view blogs' });
+  }
+
   try {
     const result = await mongodb.getDb().db().collection('blogs')
       .find()
@@ -15,6 +19,7 @@ const getAll = async (req, res) => {
     res.status(500).json({ error: 'An error occurred while retrieving blogs' });
   }
 };
+
 
 
 //🧱CREATE FUNCTION WITH ERROR HANDLING🧱
