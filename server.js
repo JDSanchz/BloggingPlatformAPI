@@ -36,9 +36,26 @@ app.get('/', (req, res) => {
 });
 
 
-app.get('/profile', requiresAuth(), (req, res) => {
-  res.send(JSON.stringify(req.oidc.user));
+app.get('/profile', requiresAuth(), async (req, res) => {
+  try {
+    // Get the user's ID
+    const userId = req.oidc.user.sub;
+
+    // Connect to MongoDB and get the 'accounts' collection
+    const accountsCollection = mongodb.getDb().db().collection('accounts');
+
+    // Insert the user's ID into the 'accounts' collection
+    const result = await accountsCollection.insertOne({
+      _id: userId,
+    });
+
+    res.send(`Inserted document with ID ${result.insertedId}`);
+  } catch (error) {
+    console.error('An error occurred:', error);
+    res.status(500).send('An error occurred while trying to save user information');
+  }
 });
+
 
 
 // Routes
