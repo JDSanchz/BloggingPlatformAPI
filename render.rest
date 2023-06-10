@@ -1,4 +1,4 @@
-###✅GET
+###✅🔒GET
 GET https://bloggingapi1.onrender.com/blogs
 Content-Type: application/json
 
@@ -7,8 +7,11 @@ POST https://bloggingapi1.onrender.com/blogs
 Content-Type: application/json
 
 {
-  "message": "Rexburg, the exceptional bovine professor teaching Computer Science at Barnyard University. Despite his unconventional background, this friendly cow boasts an impressive repertoire of CS knowledge. With his big, round glasses perched on his snout and chalk held firmly in his hoof, Mr. Moo is an image hard to forget. Renowned for his approachable teaching style, Mr. Moo simplifies complex CS theories, turning them into digestible \"cow-sized\" bites of knowledge. His patience and enthusiasm make learning algorithms and data structures surprisingly easy. He adeptly utilizes the chalkboard, filling it with neat diagrams and concise code snippets, making sure every student follows. Furthermore, Mr. Moo ensures a hands-on learning experience by incorporating practical projects. He encourages learning at a comfortable pace, firmly believing that slow and steady wins the race in the vast pasture of Computer Science. His students can't help but admire his bovine brilliance and are always moo-ved by his dedication. Truly, Mr. Moo is the epitome of an udderly outstanding educator.",
-  "userId": 120
+  "title": "The Bovine Professor",
+  "tags": ["Education", "Humour"],
+  "comments": 4,
+  "message": "Meet Mr. Vaca, the exceptional bovine professor teaching Computer Science at Barnyard University. Despite his unconventional background, this friendly cow boasts an impressive repertoire of CS knowledge. With his big, round glasses perched on his snout and chalk held firmly in his hoof, Mr. Moo is an image hard to forget.",
+  "userId": 7
 }
 
 ###❌POST ERROR HANDLING EXAMPLE
@@ -16,27 +19,39 @@ POST https://bloggingapi1.onrender.com/blogs
 Content-Type: application/json
 
 {
-  "message": "",
+  "title": "",
+  "tags": [],
+  "comments": "",
+  "message": "Mr. Vaca.",
   "userId": 7
 }
+
 
 ###✅PUT
 PUT https://bloggingapi1.onrender.com/blogs/6468249c389a944fbca167db
 Content-Type: application/json
 
 {
-  "message": "IDAHO, the exceptional bovine professor teaching Computer Science at Barnyard University. Despite his unconventional background, this friendly cow boasts an impressive repertoire of CS knowledge. With his big, round glasses perched on his snout and chalk held firmly in his hoof, Mr. Moo is an image hard to forget. Renowned for his approachable teaching style, Mr. Moo simplifies complex CS theories, turning them into digestible \"cow-sized\" bites of knowledge. His patience and enthusiasm make learning algorithms and data structures surprisingly easy. He adeptly utilizes the chalkboard, filling it with neat diagrams and concise code snippets, making sure every student follows. Furthermore, Mr. Moo ensures a hands-on learning experience by incorporating practical projects. He encourages learning at a comfortable pace, firmly believing that slow and steady wins the race in the vast pasture of Computer Science. His students can't help but admire his bovine brilliance and are always moo-ved by his dedication. Truly, Mr. Moo is the epitome of an udderly outstanding educator.",
+  "title": "Update: The Bovine Professor",
+  "tags": ["Update", "Education", "Humour"],
+  "comments": 5,
+  "message": "Viva, the exceptional bovine professor teaching Computer Science at Barnyard University. Despite his unconventional background, this friendly cow boasts an impressive repertoire of CS knowledge. With his big, round glasses perched on his snout and chalk held firmly in his hoof, Mr. Moo is an image hard to forget.",
   "userId": 12
 }
+
 
 ###❌PUT ERROR HANDLING EXAMPLE
 PUT https://bloggingapi1.onrender.com/blogs/123
 Content-Type: application/json
 
 {
-  "message": "Updated message",
+  "title": "Update",
+  "tags": ["Single Tag"],
+  "comments": "abc",
+  "message": "Short Msg",
   "userId": "abc"
 }
 
+
 ###⚠️DELETE (WORKS IF ID EXISTS IF NOT ERROR HANLDING ACTIVES)
-DELETE https://bloggingapi1.onrender.com/blogs/646fe4d8a418732be1286de7
+DELETE https://bloggingapi1.onrender.com/blogs/6468db98ce7f9c56f4cb0ea8

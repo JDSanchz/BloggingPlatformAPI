@@ -20,8 +20,6 @@ const getAll = async (req, res) => {
   }
 };
 
-
-
 //🧱CREATE FUNCTION WITH ERROR HANDLING🧱
 const create = async (req, res) => {
   const errors = validationResult(req);
@@ -32,6 +30,9 @@ const create = async (req, res) => {
   try {
     const blog = {
       date: new Date(),
+      title: req.body.title,
+      tags: req.body.tags,
+      comments: req.body.comments,
       message: req.body.message,
       userId: req.body.userId
     };
@@ -47,7 +48,13 @@ const create = async (req, res) => {
 const update = async (req, res) => {
   try {
     const blogId = req.params.id;
-    const updatedBlog = req.body;
+    const updatedBlog = {
+      title: req.body.title,
+      tags: req.body.tags,
+      comments: req.body.comments,
+      message: req.body.message,
+      userId: req.body.userId
+    };
 
     // Check if blog exists
     const blog = await mongodb.getDb().db().collection('blogs').findOne({ _id: new ObjectId(blogId) });
@@ -62,6 +69,7 @@ const update = async (req, res) => {
     res.status(500).json({ error: 'An error occurred while updating the blog' });
   }
 };
+
 
 
 //🧱REMOVE FUNCTION WITH ERROR HANDLING🧱

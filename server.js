@@ -38,15 +38,17 @@ app.get('/', (req, res) => {
 
 app.get('/profile', requiresAuth(), async (req, res) => {
   try {
-    // Get the user's ID
+    // Get the user's ID and email
     const userId = req.oidc.user.sub;
+    const userEmail = req.oidc.user.email;
 
     // Connect to MongoDB and get the 'accounts' collection
     const accountsCollection = mongodb.getDb().db().collection('accounts');
 
-    // Insert the user's ID into the 'accounts' collection
+    // Insert the user's ID and email into the 'accounts' collection
     const result = await accountsCollection.insertOne({
       _id: userId,
+      email: userEmail
     });
 
     res.send(`Inserted document with ID ${result.insertedId}`);
