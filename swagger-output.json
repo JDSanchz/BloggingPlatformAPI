@@ -13,13 +13,10 @@
   "securityDefinitions": {
     "OAuth2": {
       "type": "oauth2",
-      "flows": {
-        "implicit": {
-          "authorizationUrl": "https://dev-5pm6oxa2htvy7b6m.us.auth0.com/authorize",
-          "scopes": {
-            "read:all": "Grants read access to all routes"
-          }
-        }
+      "flow": "implicit",
+      "authorizationUrl": "https://dev-5pm6oxa2htvy7b6m.us.auth0.com/authorize",
+      "scopes": {
+        "read:all": "Grants read access to all routes"
       }
     }
   },
