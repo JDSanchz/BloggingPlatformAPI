@@ -31,8 +31,35 @@ const config = {
 app.use(auth(config));
 
 // req.isAuthenticated is provided from the auth router
-app.get('/', (req, res) => {
-  res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
+app.get('/', requiresAuth(), async (req, res) => {
+  try {
+    // Get the user's ID and email
+    const userId = req.oidc.user.sub;
+    const userEmail = req.oidc.user.email;
+
+    // Connect to MongoDB and get the 'accounts' collection
+    const accountsCollection = mongodb.getDb().db().collection('accounts');
+
+    // Check if the user already exists in the 'accounts' collection
+    const existingUser = await accountsCollection.findOne({_id: userId});
+
+    if (existingUser) {
+      // If the user exists, send a welcome back message
+      res.send('Good to see you again');
+    } else {
+      // If the user doesn't exist, insert the user's ID and email into the 'accounts' collection
+      const result = await accountsCollection.insertOne({
+        _id: userId,
+        email: userEmail
+      });
+
+      // Send a welcome message
+      res.send('Welcome! Thanks for using Blogs API');
+    }
+  } catch (error) {
+    console.error('An error occurred:', error);
+    res.status(500).send('An error occurred while trying to save user information');
+  }
 });
 
 
