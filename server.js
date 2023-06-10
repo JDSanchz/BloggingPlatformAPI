@@ -45,19 +45,27 @@ app.get('/profile', requiresAuth(), async (req, res) => {
     // Connect to MongoDB and get the 'accounts' collection
     const accountsCollection = mongodb.getDb().db().collection('accounts');
 
-    // Insert the user's ID and email into the 'accounts' collection
-    const result = await accountsCollection.insertOne({
-      _id: userId,
-      email: userEmail
-    });
+    // Check if the user already exists in the 'accounts' collection
+    const existingUser = await accountsCollection.findOne({_id: userId});
 
-    res.send(`Inserted document with ID ${result.insertedId}`);
+    if (existingUser) {
+      // If the user exists, send a welcome back message
+      res.send('Good to see you again');
+    } else {
+      // If the user doesn't exist, insert the user's ID and email into the 'accounts' collection
+      const result = await accountsCollection.insertOne({
+        _id: userId,
+        email: userEmail
+      });
+
+      // Send a welcome message
+      res.send('Welcome! Thanks for using Blogs API');
+    }
   } catch (error) {
     console.error('An error occurred:', error);
     res.status(500).send('An error occurred while trying to save user information');
   }
 });
-
 
 
 // Routes
