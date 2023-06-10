@@ -66,6 +66,26 @@ router.put('/:id',
   blogsController.update
 );
 
+app.delete('/accounts/:user_id', async (req, res) => {
+  try {
+    const userId = req.params.user_id;
+
+    // Connect to MongoDB and get the 'accounts' collection
+    const accountsCollection = mongodb.getDb().db().collection('accounts');
+
+    // Delete the account based on the user_id
+    const result = await accountsCollection.deleteOne({ _id: userId });
+
+    if (result.deletedCount === 1) {
+      res.status(200).json({ message: 'Account deleted successfully' });
+    } else {
+      res.status(404).json({ error: 'Account not found' });
+    }
+  } catch (error) {
+    console.error('An error occurred:', error);
+    res.status(500).json({ error: 'An error occurred while deleting the account' });
+  }
+});
 
 
 module.exports = router;
