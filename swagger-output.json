@@ -15,7 +15,7 @@
       "type": "oauth2",
       "flows": {
         "implicit": {
-          "authorizationUrl": "dev-5pm6oxa2htvy7b6m.us.auth0.com",
+          "authorizationUrl": "https://dev-5pm6oxa2htvy7b6m.us.auth0.com/authorize",
           "scopes": {
             "read:all": "Grants read access to all routes"
           }
