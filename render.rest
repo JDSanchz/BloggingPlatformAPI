@@ -55,3 +55,6 @@ Content-Type: application/json
 
 ###⚠️DELETE (WORKS IF ID EXISTS IF NOT ERROR HANLDING ACTIVES)
 DELETE https://bloggingapi1.onrender.com/blogs/6468db98ce7f9c56f4cb0ea8
+
+###⚠️DELETE ACCOUNT
+DELETE https://bloggingapi1.onrender.com/blogs/accounts/auth0|6483c7e8c85701068336478a

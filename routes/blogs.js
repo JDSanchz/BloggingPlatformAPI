@@ -3,8 +3,9 @@ const router = express.Router();
 const { body } = require('express-validator');
 const blogsController = require('../controllers/blogs');
 const { param } = require('express-validator');
-
 const { requiresAuth } = require('express-openid-connect');
+const mongodb = require('../db/connect');
+const { ObjectId } = require('mongodb');
 
 //🧱GET ALL FUNCTION THAT USES AUTH0🧱
 router.get('/', requiresAuth(), blogsController.getAll);
@@ -66,7 +67,8 @@ router.put('/:id',
   blogsController.update
 );
 
-app.delete('/accounts/:user_id', async (req, res) => {
+//🧱DELETE ACCOUNT FUNCTION🧱
+router.delete('/accounts/:user_id', async (req, res) => {
   try {
     const userId = req.params.user_id;
 
@@ -86,6 +88,5 @@ app.delete('/accounts/:user_id', async (req, res) => {
     res.status(500).json({ error: 'An error occurred while deleting the account' });
   }
 });
-
 
 module.exports = router;
